@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scrape Test</title>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(
+            function(){
+                $('button').on('click', ()=>{
+                    event.preventDefault();
+                    ajaxCall();
+                })
+            }
+        )
+        function printData(data){
+            console.log('server response',data)
+        }
+        function ajaxCall(){
+            $.ajax({
+                url: 'http://localhost:6700/scrapeMenu',
+                method: 'get',
+                // dataType: 'JSON',
+                success: data => {
+                    console.log(data)
+                },
+                error: err=>{
+                    console.log(err)
+                }
+            })
+        }
+
+    </script>
+</head>
+<body>
+    <button type='button'>Get the Data</button>
+    <div class="test-area">
+
+    </div>
+</body>
+</html>
